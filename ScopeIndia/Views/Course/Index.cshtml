@@ -1,0 +1,106 @@
+﻿
+
+    
+     
+@model List<ScopeIndia.Models.Course>
+@{
+    ViewData["Title"] = "Courses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+ 
+    body {
+        background: linear-gradient(to bottom, #001f3f, #003366);
+    }
+
+    .section-heading {
+        background-color: #e6b800;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+
+    .course-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        background-color: #001f3f;
+        padding: 20px;
+    }
+
+    .course-card {
+        background-color: #111;
+        color: white;
+        border: 1px solid #333;
+        border-radius: 10px;
+        padding: 15px 20px;
+        margin: 10px;
+        flex: 0 1 calc(33.333% - 20px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        box-shadow: 0 0 8px #000;
+    }
+
+        .course-card:hover {
+            background-color: #222;
+            color: white;
+            text-decoration: none;
+        }
+
+    .arrow {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    @@media (max-width: 768px) {
+        .course-card {
+            flex: 0 1 calc(100% - 20px);
+        }
+    }
+    
+</style>
+
+<!-- Header -->
+<div class="text-center py-2" style="background-color: #00004d;">
+    <h2 class="fw-bold text-warning">Courses at SCOPE INDIA</h2>
+</div>
+
+<!-- Center Description -->
+<div style="background-color: #2f2f2f; padding: 20px 0;">
+    <h1 class="text-center text-white mb-2">Center for Software, Networking, & Cloud Education</h1>
+    <p class="text-center text-white mb-0">One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience. Over 1,000 students find their dream careers each year and we have assisted more than 15,000 students so far.</p>
+</div>
+
+<!-- Render categories -->
+@foreach (var category in new[] { "Data Science", "Software", "DevOps", "Testing", "Other" })
+{
+    var courses = Model.Where(c => c.Category == category).ToList();
+    if (courses.Any())
+    {
+        var title = category switch
+        {
+            "Data Science" => "Data Science, AI, & Data Analytics Courses",
+            "Software" => "Software Courses",
+            "DevOps" => "Networking, Server, Cloud, & DevOps Courses",
+            "Testing" => "Software Testing Courses",
+            "Other" => "Other Courses",
+            _ => category
+        };
+
+        <div class="section-heading">@title</div>
+        <div class="course-row">
+            @foreach (var course in courses)
+            {
+                <a href="@Url.Action("Details", "Course", new { id = course.Id })" class="course-card">
+                    @course.Title
+                    <span class="arrow">▶</span>
+                </a>
+            }
+        </div>
+    }
+}

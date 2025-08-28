@@ -1,0 +1,237 @@
+﻿@model ScopeIndia.Models.Student
+@{
+    ViewBag.Title = "Student Profile";
+}
+
+<style>
+    body {
+        background-color: #000014;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .profile-container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #1c1c1c;
+        border: 2px solid yellow;
+        border-radius: 10px;
+    }
+
+        .profile-container h2 {
+            text-align: center;
+            color: #FFC300;
+            margin-bottom: 20px;
+        }
+
+    .profile-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+
+    .profile-label {
+        font-weight: bold;
+        width: 40%;
+        color: #FFC300;
+    }
+
+    .profile-value {
+        width: 55%;
+    }
+</style>
+
+<div class="profile-container">
+    <h2>Student Profile</h2>
+
+    <div class="profile-row">
+        <div class="profile-label">Full Name:</div>
+        <div class="profile-value">@Model.FullName</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Date of Birth:</div>
+        <div class="profile-value">@Model.DateOfBirth.ToString("yyyy-MM-dd")</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Gender:</div>
+        <div class="profile-value">@Model.Gender</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Educational Qualification:</div>
+        <div class="profile-value">@Model.EducationalQualification</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Mobile Number:</div>
+        <div class="profile-value">@Model.MobileNumber</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Email:</div>
+        <div class="profile-value">@Model.Email</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Guardian Name:</div>
+        <div class="profile-value">@Model.GuardianName</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Guardian Occupation:</div>
+        <div class="profile-value">@Model.GuardianOccupation</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Guardian Mobile:</div>
+        <div class="profile-value">@Model.GuardianMobile</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Course:</div>
+        <div class="profile-value">@Model.Course</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Training Mode:</div>
+        <div class="profile-value">@Model.TrainingMode</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">SCOPE INDIA Location:</div>
+        <div class="profile-value">@Model.ScopeLocation</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Preferred Timings:</div>
+        <div class="profile-value">@Model.PreferredTimingsDb</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Address:</div>
+        <div class="profile-value">@Model.Address</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Country:</div>
+        <div class="profile-value">@Model.Country</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">State:</div>
+        <div class="profile-value">@Model.State</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">City:</div>
+        <div class="profile-value">@Model.City</div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-label">Pin/Zip Code:</div>
+        <div class="profile-value">@Model.PinZipCode</div>
+    </div>
+</div>
+
+
+
+@* <h3>Picked Courses</h3> *@
+@* @if (ViewBag.PickedCourses != null && ViewBag.PickedCourses.Count > 0) *@
+@* { *@
+@*     <ul> *@
+@*         @foreach (var course in ViewBag.PickedCourses) *@
+@*         { *@
+@*             <li>@course.Title</li> *@
+@*         } *@
+@*     </ul> *@
+@* } *@
+@* else *@
+@* { *@
+@*     <p>No course picked yet.</p> *@
+@* } *@
+
+@* <h3>Picked Courses</h3> *@
+@* @if (ViewBag.PickedCourses != null && ViewBag.PickedCourses.Count > 0) *@
+@* { *@
+@*     <ul> *@
+@*         @foreach (var course in ViewBag.PickedCourses) *@
+@*         { *@
+@*             <li> *@
+@*                 @course.Title *@
+@*                 <a asp-controller="Registration" asp-action="RemoveCourse" asp-route-courseId="@course.Id" *@
+@*                    class="btn btn-danger btn-sm ms-2">Remove</a> *@
+@*             </li> *@
+@*         } *@
+@*     </ul> *@
+@* } *@
+@* else *@
+@* { *@
+@*     <p>No course picked yet.</p> *@
+@* } *@
+
+<h3>Picked Courses</h3>
+
+@if (ViewBag.PickedCourses != null && ViewBag.PickedCourses.Count > 0)
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                
+                <th>Course Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int index = 1;
+            }
+            @foreach (var course in ViewBag.PickedCourses)
+            {
+                <tr>
+                    
+                    <td>@course.Title</td>
+                    
+                    <td>
+                        <a asp-controller="Registration" asp-action="RemoveCourse" asp-route-courseId="@course.Id"
+                           class="btn btn-danger btn-sm">Remove</a>
+                    </td>
+                </tr>
+                index++;
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No course picked yet.</p>
+}
+
+<style>
+    /*  font for table */
+    table {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 14px; /* medium font size, sharp */
+    }
+
+        table th, table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px; 
+        }
+
+        /* slightly bold header */
+        table thead th {
+            font-weight: 600;
+        }
+
+        /* improve contrast */
+        table tbody tr td {
+            color: antiquewhite;
+            font-weight:bold;
+        }
+</style>
+
+

@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Student Login";
+}
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <form asp-action="Login" method="post">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email" required />
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required />
+
+        <div class="checkbox-container">
+            <input type="checkbox" name="check" id="check" value="keeplogin" />
+            <label for="check">Keep me logged in</label>
+        </div>
+
+        <div class="links-row">
+            <a asp-action="FirstTimeLogin">First time login</a>
+            <a asp-action="ForgotPassword">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="message error">@ViewBag.Error</div>
+    }
+    @if (ViewBag.Success != null)
+    {
+        <div class="message success">@ViewBag.Success</div>
+    }
+</div>
+
+<style>
+    .login-container {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        margin: 50px auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #1A2041;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        .btn:hover {
+            background-color: #2f3a6b;
+        }
+
+    .links-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .message.error {
+        color: red;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .message.success {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>

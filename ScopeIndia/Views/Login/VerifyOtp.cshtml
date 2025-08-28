@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Verify OTP";
+}
+
+<form method="post">
+    <h2>Verify OTP</h2>
+    <input type="text" name="otpInput" class="form-control" placeholder="Enter OTP" required />
+    <button type="submit" class="btn">Verify</button>
+    <p style="color:red">@ViewBag.Error</p>
+</form>

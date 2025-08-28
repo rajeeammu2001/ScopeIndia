@@ -1,0 +1,263 @@
+﻿@model ScopeIndia.Models.Course
+@{
+    ViewData["Title"] = "Data Science & AI Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var syllabusItems = Model.Syllabus?.Split(',') ?? new string[0];
+}
+
+<style>
+    .course-heading {
+        background-color: #001f3f;
+        color: orange;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: #071f3b;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+        overflow-x: hidden;
+    }
+
+    .hero {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background: #071f3b;
+        text-align: center;
+        padding: 30px 10px;
+    }
+
+        .hero h2 {
+            color: #FFC300;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+    .subtitle {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 20px 10px;
+        font-weight: bold;
+        font-size: 18px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    .yellow-bar {
+        background-color: #ffcc00;
+        color: black;
+        text-align: center;
+        padding: 15px 10px;
+        font-weight: bold;
+        font-size: 20px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        position: relative;
+    }
+
+        .yellow-bar::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+        }
+
+    .info-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 40px;
+        flex-wrap: wrap;
+        background: #071f3b;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    .info-box {
+        border: 1px solid #ffcc00;
+        background: #000028;
+        padding: 15px 25px;
+        border-radius: 50px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        min-width: 460px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .long-description {
+        background: #0c0b0b;
+        border: 2px solid #ffcc00;
+        padding: 30px 20px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        box-shadow: 2px 2px 10px #000;
+        line-height: 1.7;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    .syllabus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        padding: 30px 20px;
+        background: #071f3b;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    .syllabus-item {
+        border: 1px solid #ffcc00;
+        padding: 12px 20px;
+        border-radius: 10px;
+        background: #111;
+        color: white;
+        border: 2px solid #ffcc00;
+        font-weight: 600;
+        font-size: 18px;
+        
+    }
+
+    .action-buttons {
+        text-align: center;
+        margin: 40px 0 60px 0;
+    }
+
+    .btn-custom {
+        background: linear-gradient(to right, #ddd, #aaa);
+        padding: 15px 30px;
+        margin: 15px;
+        border-radius: 30px;
+        font-weight: bold;
+        color: black;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        min-width: 200px;
+        box-shadow: 2px 2px 5px #000;
+    }
+
+    .divider-yellow {
+        border: 2px solid #ffcc00;
+        height: 5px;
+        background-color: #ffcc00;
+        box-shadow: 0px 2px 4px rgba(255, 204, 0, 0.6);
+        width: 100%;
+        margin: 0;
+    }
+
+    .divider-white {
+        border: 2px solid #ffcc00;
+        height: 4px;
+        background-color: white;
+        box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.4);
+        width: 100%;
+        margin: 0;
+    }
+
+    @@media (max-width: 768px) {
+        .info-box, .syllabus-item {
+            min-width: 100%;
+        }
+
+        .syllabus-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<!-- Hero Title -->
+<div class="hero">
+    <h2>@Model.Title & Internship</h2>
+</div>
+
+<div style="width: 100vw; margin-left: calc(-50vw + 50%);">
+    <hr class="divider-yellow" />
+</div>
+
+<!-- Subtitle -->
+<div style="background-color: #2f2f2f; padding: 20px 10px; width: 100vw; margin-left: calc(-50vw + 50%);">
+    <h1 class="text-center text-white mb-2">Center for Software, Networking, & Cloud Education</h1>
+    <p class="text-center text-white mb-0">
+        One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience.
+        Over 1,000 students find their dream careers each year and we have assisted more than 15,000 students so far.
+    </p>
+</div>
+
+<div style="width: 100vw; margin-left: calc(-50vw + 50%);">
+    <hr class="divider-white" />
+</div>
+
+<!-- Syllabus Label -->
+<div class="yellow-bar">
+    Course Syllabus
+</div>
+
+<div style="width: 100vw; margin-left: calc(-50vw + 50%);">
+    <hr class="divider-white" />
+</div>
+
+<!-- Info Row -->
+<div class="info-row">
+    <div class="info-box">Course Duration: @Model.Duration</div>
+    <div class="info-box">@Model.Timing</div>
+    <div class="info-box">Next Batch: @Model.BatchDate</div>
+</div>
+
+<div style="width: 100vw; margin-left: calc(-50vw + 50%);">
+    <hr class="divider-yellow" />
+</div>
+
+<!-- Course Description -->
+<div class="long-description">
+    <p>
+        This comprehensive program equips you with the skills to excel in data-driven fields,
+        mastering tools like Python 3.12, MySQL, and Django. Dive deep into data processing with Pandas, NumPy, and advanced data visualization using Matplotlib, Seaborn, and Tableau.
+        You'll also gain expertise in machine learning covering supervised, unsupervised, and reinforcement learning along with deep learning and AI to stay ahead in this fast-evolving domain.
+    </p>
+    <p>
+        Master the fundamentals of REST services, GIT version control, and web hosting techniques.
+        Real-world exposure comes through live projects with Suffix E Solutions, helping you apply what you've learned.
+        The program also emphasizes logical reasoning and includes interview preparation and on-the-job training,
+        ensuring you're ready to hit the ground running in any data science role.
+    </p>
+    <p>
+        By the end of the course, you will have developed a strong foundation in both technical and
+        practical aspects of data science, making you a valuable asset in any organization.
+    </p>
+</div>
+
+<div style="width: 100vw; margin-left: calc(-50vw + 50%);">
+    <hr class="divider-yellow" />
+</div>
+
+<!-- Syllabus Items -->
+<div class="syllabus-grid">
+    @foreach (var topic in syllabusItems)
+    {
+        <div class="syllabus-item">@topic.Trim()</div>
+    }
+</div>
+
+<div style="width: 100vw; margin-left: calc(-50vw + 50%);">
+    <hr class="divider-yellow" />
+</div>
+
+<!-- Buttons -->
+<div class="action-buttons">
+    <a href="https://scopeindia.org/contact.html" class="btn-custom">Talk to Us</a>
+    <a href="@Url.Action("Index", "Course")" class="btn-custom">Back to Courses</a>
+</div>

@@ -1,0 +1,107 @@
+﻿@model ScopeIndia.Models.DashboardViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<style>
+    .dashboard-container {
+        max-width: 1000px;
+        margin: 30px auto;
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+        .dashboard-container h2 {
+            margin-bottom: 20px;
+            color: #1A2041;
+        }
+
+    .table thead th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .btn-signup {
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+        .btn-signup:hover {
+            background-color: #0b5ed7;
+            color: white;
+        }
+
+    .search-box {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    .section-title {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        color: #1A2041;
+    }
+</style>
+
+<div class="dashboard-container">
+    <h2>Welcome to Student Dashboard, @Model.StudentName!</h2>
+    <p>Email: @Model.Email</p>
+
+    <div class="search-box">
+        <input type="text" class="form-control" placeholder="Search courses...">
+    </div>
+
+    <h4 class="section-title">Available Courses</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Duration</th>
+               
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.AvailableCourses != null && Model.AvailableCourses.Any())
+            {
+                foreach (var course in Model.AvailableCourses)
+                {
+                    <tr>
+                        <td>@course.Title</td>
+                        <td>@course.Duration</td>
+                        
+                        <td>
+                            @* <a href="@Url.Action("Details", "Course", new { id = course.Id })" class="btn btn-primary">Signup</a> *@
+                            <a href="@Url.Action("Details", "Course", new { id = course.Id })" class="btn btn-primary">Signup</a>
+
+
+
+
+
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">No available courses.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

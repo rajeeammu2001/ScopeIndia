@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "About Us";
+    var sections = ViewBag.Sections as List<ScopeIndia.Models.AboutUsSection>;
+    var stats = ViewBag.Stats as List<ScopeIndia.Models.AboutUsStats>;
+}
+
+<style>
+    .section-title { color: orange; font-weight: bold; font-size: 20px; text-align: center; margin-top: 30px; }
+    .section-header { color: #ffc300; font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 10px; }
+    .section-content { color: white; font-size: 18px; text-align: center; padding: 0 20px; }
+    .about-container { background-color: #000028; padding: 40px 20px; }
+    .story-section, .mission-vision, .growth-impact { background-color: #111; padding: 40px 20px; }
+    .about-flex { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; }
+    .about-left, .about-right { flex: 1; min-width: 300px; color: white; }
+    .stats-box {
+        border: 2px solid #00AEEF;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        background-color: transparent;
+        margin-top: 20px;
+    }
+    .stats-box p { margin: 0; padding: 5px 0; font-size: 18px; }
+    .mission-card, .vision-card {
+        background-color: #32005e;
+        color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        flex: 1;
+        min-width: 250px;
+        border: 2px solid orange;
+    }
+</style>
+
+<div class="about-container">
+    <div class="section-title">Know About SCOPE INDIA</div>
+    <div class="section-header">SCOPE INDIA, your career partner!</div>
+    <div class="section-content">
+        One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience.<br />
+        Over 1,000 students find their dream careers each year, and we have assisted more than 15,000 students so far.
+    </div>
+    <div class="section-content" style="font-size: 16px; padding-top: 20px;">
+        Software, Networking, and Cloud Professional Education Centre in Kerala and Tamil Nadu from Suffix E Solutions with WORKING PROFESSIONALS oriented on-the-job TRAINING model.
+        SCOPE INDIA provides courses in Data Science, AI, ML, Cloud, Software Testing, DevOps, Full Stack, and more with trusted job-based internship.
+    </div>
+    <div class="text-center mt-4">
+        <img src="~/images/about/google-rating.png" alt="Google Rating" width="160" />
+    </div>
+</div>
+
+<!-- Our Story Section -->
+<div class="story-section">
+    <div class="about-flex">
+        <div class="about-left">
+            <h2>Our Story</h2>
+            <h4>Founded in 2007</h4>
+            <p>With over two decades of experience creating extensive internet systems, Suffix E Solutions is a top provider of networking and software services... (full text from image)</p>
+            <div class="mt-3">
+                <img src="~/images/aboutus/iso1.png" width="80" />
+                <img src="~/images/aboutus/iso2.png" width="80" />
+                <img src="~/images/aboutus/iso3.png" width="80" />
+            </div>
+        </div>
+        <div class="about-right text-center">
+            <img src="~/images/about/team.gif" alt="Team GIF" style="max-width: 100%; border-radius: 10px;" />
+            <div class="stats-box mt-3">
+                <p><strong>15000+</strong> Students are Placed</p>
+                <p><strong>500+</strong> Partner Companies</p>
+                <p><strong>100%</strong> Placement Assistance</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mission & Vision -->
+<div class="mission-vision">
+    <div class="section-title">Our Mission & Vision</div>
+    <div class="about-flex">
+        <div class="mission-card">
+            <h4>Our Mission</h4>
+            <p>SCOPE INDIA seeks to close the knowledge gap between education and employment by offering industry-focused IT training...</p>
+            <ul>
+                <li>Industry-aligned curriculum</li>
+                <li>Practical skill development</li>
+                <li>Career-focused training</li>
+            </ul>
+        </div>
+        <div class="vision-card">
+            <h4>Our Vision</h4>
+            <p>We aspire to become the most respected and forward-thinking training organization in India and beyond...</p>
+            <ul>
+                <li>Global recognition</li>
+                <li>Innovation leadership</li>
+                <li>Technology excellence</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Evolution / Growth / Present Day Impact -->
+<div class="growth-impact">
+    <div class="about-flex">
+        <div class="about-left">
+            <h3>Evolution</h3>
+            <p>SCOPE INDIA was launched in 2015 by Suffix E Solutions to address the growing demand for industry-relevant IT training...</p>
+            <h3>Growth</h3>
+            <p>SCOPE INDIA began its journey in Trivandrum in 2015 and has steadily grown into a multi-location powerhouse... </p>
+        </div>
+        <div class="about-right">
+            <h3>Present Day Impact</h3>
+            <p>SCOPE INDIA has helped 15,000+ students build successful careers in IT. Our alumni are now placed in reputed companies... </p>
+        </div>
+    </div>
+</div>
+

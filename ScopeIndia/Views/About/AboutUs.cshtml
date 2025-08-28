@@ -1,0 +1,262 @@
+﻿@{
+    ViewBag.Title = "About Us";
+    var sections = ViewBag.Sections as List<ScopeIndia.Models.AboutUsSection>;
+    var stats = ViewBag.Stats as List<ScopeIndia.Models.AboutUsStats>;
+}
+
+<style>
+    .section-title {
+        color: orange;
+        font-weight: bold;
+        font-size: 22px;
+        text-align: center;
+        margin: 0 auto;
+        padding: 20px;
+        border-top: 1px solid #FFC300;
+        border-bottom: 1px solid #FFC300;
+        background-color: #000028;
+    }
+
+    .section-header {
+        color: #ffc300;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .section-content {
+        color: white;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        padding: 0 40px;
+    }
+
+    .about-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .about-container {
+        background-color: #000028;
+        padding: 60px 40px;
+        margin-bottom: 0;
+    }
+
+    .story-section {
+        background-color: #111;
+        padding: 60px 40px 20px 40px; /* reduced bottom padding */
+        margin-bottom: 0;
+    }
+
+    .growth-impact {
+        background-color: #111;
+        padding: 20px 40px 60px 40px; /* reduced top padding */
+        margin-bottom: 0;
+    }
+
+    .mission-vision {
+        background-color: #001f73;
+        padding: 60px 40px;
+        margin-bottom: 0;
+    }
+
+    .about-flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .about-left, .about-right {
+        flex: 1;
+        min-width: 400px;
+        color: white;
+    }
+
+    .stats-box {
+        border-top: 14px solid #00AEEF;
+        border-right: 14px solid #00AEEF;
+        border-left: none;
+        border-bottom: none;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        background-color: transparent;
+        margin-top: 30px;
+    }
+
+        .stats-box p {
+            margin: 0;
+            padding: 10px 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+    .mission-card, .vision-card {
+        background-color: #003d80;
+        border: 2px solid #FFC300;
+        border-radius: 10px;
+        color: white;
+        padding: 30px;
+        margin: 10px;
+        flex: 1;
+        min-width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .center-heading {
+        text-align: center;
+        color: white;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+        .center-heading span {
+            display: inline-block;
+            border-bottom: 5px solid #00AEEF;
+            padding-bottom: 12px;
+        }
+
+
+    .story-section .about-right {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .story-section .about-flex {
+        margin-bottom: 0 !important;
+    }
+
+    .growth-impact {
+        margin-top: 0 !important;
+    }
+
+</style>
+
+<div class="section-title">Know About SCOPE INDIA</div>
+
+<div class="about-container">
+    <div class="about-wrapper">
+        <div style="display: flex; justify-content: center;">
+            <div class="section-header">SCOPE INDIA, your career partner!</div>
+        </div>
+        <div class="section-content">
+            One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience.
+            Over 1,000 students find their dream careers each year, and we have assisted more than 15,000 students so far.
+        </div>
+        <div class="section-content" style="font-size: 16px; padding-top: 20px;">
+            <p>
+                Software, Networking, and Cloud Professional Education Centre in Kerala and Tamil Nadu from Suffix E Solutions with WORKING PROFESSIONALS oriented on-the-job TRAINING model.
+                SCOPE INDIA provides courses for Software Programming in Python (Data Science | Artificial Intelligence | Machine Learning | Deep Learning, Data Analytics), Java, PHP, .Net, MERN, Software Testing Manual and Automation, Cloud Computing (AWS | Azure), Server Administration (MicroSoft MCSE | Linux RHCE), Networking (CCNA), DevOps, Mobile App Development in Flutter, and Digital Marketing. A Training with a 100% Trusted Job-Based Internship Model. SCOPE INDIA has a Strong Placement Cell that provides jobs to thousands of students annually.
+                We assure you, you won't regret it after training from SCOPE INDIA!
+            </p>
+            <p>
+                This is how SCOPE INDIA can support both newbies and those experienced in the industry to upgrade their skills.
+            </p>
+        </div>
+        <div class="text-center mt-4">
+            <img src="~/images/aboutus/5star.webp" alt="Google Rating" width="250" />
+            <p style="color: white; font-weight: bold;  font-size: 18px;">
+                Google 4.9 ★ Rated Institute
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="story-section">
+    <div class="about-wrapper">
+        <h2 class="center-heading"><span>Our Story</span></h2>
+        <div class="about-flex">
+            <div class="about-left">
+                <h4 style="text-align:center; font-size: 22px; margin-bottom: 10px;color: #ffc300;">Founded in 2007</h4>
+                <p>With over two decades of experience creating extensive internet systems, Suffix E Solutions is a top provider of networking and software services. By concentrating on our clients' primary needs, we provide dependable and useful solutions that are suited to their specifications. From documentation and framework design to coding, testing, and continuing maintenance, we have experience with every stage of the development lifecycle. Our knowledgeable engineers, who have 18 years of experience in a variety of fields, offer detailed direction at every stage of the development process. Our vast knowledge base enables us to provide our clients with accurate and efficient solutions.</p>
+                <div class="mt-3 text-center">
+                    <img src="~/images/aboutus/scope-india-iso-certified.webp" width="400" />
+                </div>
+            </div>
+            <div class="about-right text-center">
+                @if (!string.IsNullOrEmpty(sections.FirstOrDefault(s => s.SectionName == "Story")?.ImageUrl))
+                {
+                    <img src="~/@sections.FirstOrDefault(s => s.SectionName == "Story")?.ImageUrl"
+                         alt="Team GIF"
+                         style="width: 100%; max-width: 600px; max-height: 500px; display: block; margin: 0 auto;" />
+                }
+                <div class="stats-box mt-3">
+                    @foreach (var stat in stats)
+                    {
+                        <p>
+                            @if (stat.Label.Contains("Students"))
+                            {
+                                <span>👨‍🎓</span>
+                            }
+                            else if (stat.Label.Contains("Partner"))
+                            {
+                                <span>🤝</span>
+                            }
+                            else if (stat.Label.Contains("Placement"))
+                            {
+                                <span>✅</span>
+                            }
+                            <span style="margin-left: 8px;"><strong>@stat.Value</strong> @stat.Label</span>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="growth-impact">
+    <div class="about-wrapper">
+        <div class="about-flex">
+            <div class="about-left">
+                <h3 style="font-size: 24px; color: #ffc300; margin-bottom: 10px;">Evolution</h3>
+                <p>SCOPE INDIA was launched in 2015 by Suffix E Solutions to address the growing demand for industry-relevant IT training under proficient working professionals. What began as a mission to bridge the gap between education and employment has grown into one of the most recognized names in tech education.</p>
+                <h3 style="font-size: 24px; color: #ffc300; margin-top: 30px; margin-bottom: 10px;">Growth</h3>
+                <p>SCOPE INDIA began its journey in Trivandrum in 2015 and has steadily grown into a multi-location training powerhouse. In 2019, we expanded to Kochi to support more aspiring professionals. In 2021, the Nagercoil branch was proudly launched, and in 2023, we launched our Technopark branch - bringing our high-quality training even closer to the heart of Kerala's IT hub. Each branch reflects our commitment to making world-class IT education accessible to more people.</p>
+            </div>
+            <div class="about-right">
+                <h3 style="font-size: 24px; color: #ffc300; margin-bottom: 10px;">Present Day Impact</h3>
+                <p>SCOPE INDIA has helped 15,000+ students build successful careers in IT. From fresh graduates to working professionals, our alumni are now placed in reputed companies across India and abroad, thanks to our dedicated placement support and industry-driven training. The team adopts all contemporary technologies from time to time, including Data Science, Artificial Intelligence, Cloud Computing, DevOps, etc.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mission-vision">
+    <div class="about-wrapper">
+        <div class="section-header">Our Mission & Vision</div>
+        <div class="about-flex">
+            <div class="mission-card">
+                <h3 style="font-size: 24px; color: #ffc300;">Our Mission</h3>
+                <p>
+                    SCOPE INDIA seeks to close the knowledge gap between education and employment by offering interactive, industry-focused IT training led by proficient working professionals and aligned with the latest trends and technologies. Our objective is to provide people with the technical expertise and confidence they need to build fulfilling careers.
+
+                    
+                </p>
+                <ul>
+                    <li>Industry-aligned curriculum</li>
+                    <li>Practical skill development</li>
+                    <li>Career-focused training</li>
+                </ul>
+            </div>
+            <div class="vision-card">
+                <h3 style="font-size: 24px; color: #ffc300;">Our Vision</h3>
+                <p>We aspire to become the most respected and forward-thinking training organization in India and beyond by shaping the future of IT education via innovation, integrity, and strong industry ties. We intend to expand globally.</p>
+                <ul>
+                    <li>Global recognition</li>
+                    <li>Innovation leadership</li>
+                    <li>Technology excellence</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

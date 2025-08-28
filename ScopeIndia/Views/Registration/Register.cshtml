@@ -1,0 +1,245 @@
+﻿@model ScopeIndia.Models.Student
+@{
+    ViewBag.Title = "Course Registration";
+}
+
+<style>
+    body {
+        background-color: #000014;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .register-container {
+        max-width: 100%;
+        padding: 20px 40px;
+    }
+
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        background-color: black;
+        border: 1px solid yellow;
+        padding: 15px;
+        border-radius: 8px;
+        width: 32%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+        color: white;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea, select {
+        width: 100%;
+        padding: 8px;
+        background-color: #1c1c1c;
+        color: white;
+        border: 1px solid #444;
+        border-radius: 4px;
+    }
+
+    .radio-group label {
+        font-weight: normal;
+        margin-right: 20px;
+    }
+
+    .button-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .submit-button {
+        background-color: yellow;
+        color: black;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .divider-yellow {
+        border: 2px solid #ffcc00;
+        height: 3px;
+        background-color: #ffcc00;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin: 0;
+    }
+</style>
+
+<hr class="divider-yellow">
+<div style="text-align:center;">
+    <h2 style="background-color:#000028;color:#FFC300;font-size:30px;font-weight:bold;">Recent Placements at SCOPE INDIA</h2>
+</div>
+<hr class="divider-yellow">
+
+<div class="register-container">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    @using (Html.BeginForm("Register", "Registration", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.FullName)
+                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FullName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DateOfBirth)
+                @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.DateOfBirth)
+            </div>
+            <div class="form-group">
+                @Html.Label("Gender (required)")
+                <div class="radio-group">
+                    @Html.RadioButtonFor(m => m.Gender, "Male") <span>Male</span>
+                    @Html.RadioButtonFor(m => m.Gender, "Female") <span>Female</span>
+                    @Html.RadioButtonFor(m => m.Gender, "Other") <span>Other</span>
+                </div>
+                @Html.ValidationMessageFor(m => m.Gender)
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.EducationalQualification)
+                @Html.TextBoxFor(m => m.EducationalQualification, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.MobileNumber)
+                @Html.TextBoxFor(m => m.MobileNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.GuardianName)
+                @Html.TextBoxFor(m => m.GuardianName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.GuardianOccupation)
+                @Html.TextBoxFor(m => m.GuardianOccupation, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.GuardianMobile)
+                @Html.TextBoxFor(m => m.GuardianMobile, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Course)
+                <select asp-for="Course" class="form-control">
+                    <option value="">-- Choose Your Course! --</option>
+                    <option value="Python Django Full Stack">Python Django Full Stack</option>
+                    <option value="Java Spring Full Stack">Java Spring Full Stack</option>
+                    <option value="ASP.NET MVC Full Stack">ASP.NET MVC Full Stack</option>
+                    <option value="MEAN Stack">MEAN Stack</option>
+                    <option value="MERN Stack">MERN Stack</option>
+                    <option value="Data Science & AI Course">Data Science & AI Course</option>
+                    <option value="Data Analytics Course">Data Analytics Course</option>
+                    <option value="DevOps Engineering">DevOps Engineering</option>
+                    <option value="Cloud & DevOps">Cloud & DevOps</option>
+                    <option value="Azure DevOps Expert">Azure DevOps Expert</option>
+                    <option value="Software Testing Expert">Software Testing Expert</option>
+                    <option value="Power BI Expert">Power BI Expert</option>
+                    <option value="Digital Marketing Expert">Digital Marketing Expert</option>
+                </select>
+                @Html.ValidationMessageFor(m => m.Course)
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Training Mode (required)")
+                <div class="radio-group">
+                    @Html.RadioButtonFor(m => m.TrainingMode, "Live online") <span>Live online</span>
+                    @Html.RadioButtonFor(m => m.TrainingMode, "Classroom") <span>Classroom</span>
+                </div>
+                @Html.ValidationMessageFor(m => m.TrainingMode)
+            </div>
+
+            <div class="form-group">
+                @Html.Label("SCOPE INDIA Location (required)")
+                <div class="radio-group">
+                    @Html.RadioButtonFor(m => m.ScopeLocation, "Technopark TVM") <span>Technopark TVM</span>
+                    @Html.RadioButtonFor(m => m.ScopeLocation, "Thampanoor TVM") <span>Thampanoor TVM</span>
+                    @Html.RadioButtonFor(m => m.ScopeLocation, "Kochi") <span>Kochi</span>
+                    @Html.RadioButtonFor(m => m.ScopeLocation, "Nagercoil") <span>Nagercoil</span>
+                    @Html.RadioButtonFor(m => m.ScopeLocation, "Online") <span>Online</span>
+                </div>
+                @Html.ValidationMessageFor(m => m.ScopeLocation)
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.PreferredTimingsDb)
+                <select asp-for="PreferredTimingsDb" class="form-control">
+                    <option value="">-- Choose Preferred Time --</option>
+                    <option value="8am - 10am">8am - 10am</option>
+                    <option value="9am - 1pm">9am - 1pm</option>
+                    <option value="1pm - 4pm">1pm - 4pm</option>
+                    <option value="4pm - 6pm">4pm - 6pm</option>
+                </select>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address)
+                @Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Country)
+                @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.State)
+                @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.City)
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PinZipCode)
+                @Html.TextBoxFor(m => m.PinZipCode, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="button-container">
+            <input type="submit" value="Complete Registration >>" class="submit-button" />
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

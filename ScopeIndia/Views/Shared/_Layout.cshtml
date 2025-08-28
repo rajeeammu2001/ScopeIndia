@@ -1,0 +1,177 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var httpContext = HttpContextAccessor.HttpContext;
+
+    // Retrieve session values
+    var sessionEmail = httpContext.Session.GetString("LoginEmail");
+    var sessionName = httpContext.Session.GetString("LoginName");
+    var sessionId = httpContext.Session.GetInt32("StudentId");
+
+    // If session expired but cookies exist, restore session
+    if (string.IsNullOrEmpty(sessionEmail) && httpContext.Request.Cookies["LoginEmail"] != null)
+    {
+        sessionEmail = httpContext.Request.Cookies["LoginEmail"];
+        sessionName = httpContext.Request.Cookies["LoginName"];
+        sessionId = int.Parse(httpContext.Request.Cookies["StudentId"]);
+
+        httpContext.Session.SetInt32("StudentId", sessionId.Value);
+        httpContext.Session.SetString("LoginEmail", sessionEmail);
+        httpContext.Session.SetString("LoginName", sessionName);
+    }
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ScopeIndia</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ScopeIndia.styles.css" asp-append-version="true" />
+
+    <style>
+        .top-header {
+            background-color: #000028;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+            .top-header img {
+                max-height: 120px;
+            }
+
+        .google-rating-img {
+            max-height: 100px;
+        }
+
+        .vertical-icons img {
+            height: 35px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+
+            .navbar-nav .nav-link[href="/Placements"] {
+                background-color: red;
+                color: white !important;
+                font-weight: bold;
+                border-radius: 5px;
+                padding: 5px 10px;
+            }
+
+        .footer-scopeindia {
+            background-color: #004080;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+            .footer-scopeindia a {
+                font-weight: 500;
+            }
+
+            .footer-scopeindia strong {
+                font-weight: 600;
+            }
+    </style>
+</head>
+
+<body>
+    
+    <!-- Header -->
+    <div class="top-header">
+        <div class="d-flex justify-content-between align-items-center py-2 px-3">
+            <img src="~/images/scopeindia-logo (1).webp" alt="Scope India Logo">
+            <div class="d-flex align-items-start">
+                <img src="~/images/google-rating-scope-india.webp" alt="Google Rating" class="google-rating-img me-3">
+                <div class="d-flex flex-column align-items-center gap-2 vertical-icons">
+                    <img src="~/images/callnow-scope-india.webp" alt="Call">
+                    <img src="~/images/whatsapp-scope-india.webp" alt="WhatsApp">
+                    <img src="~/images/gallery-scope-india.webp" alt="Gallery">
+                    <img src="~/images/backbutton.webp" alt="Back">
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-scopeindia px-3">
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav d-flex flex-row gap-3">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Hero" asp-action="Index">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Course" asp-action="Index">COURSES</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Registration" asp-action="Register">REGISTRATION</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Placements" asp-action="Index">PLACEMENTS</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="About" asp-action="AboutUs">ABOUT US</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Contact" asp-action="Index">CONTACT US</a></li>
+
+                    @if (HttpContextAccessor.HttpContext?.Session.GetInt32("StudentId") != null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-warning text-dark fw-bold ms-2"
+                               asp-controller="Registration" asp-action="Profile">
+                                PROFILE
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <form asp-controller="StudentDashboard" asp-action="Logout" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-danger text-white fw-bold ms-2">LOGOUT</button>
+                            </form>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-warning text-dark fw-bold ms-2"
+                               asp-controller="Login" asp-action="Login">
+                                LOGIN
+                            </a>
+                        </li>
+                    }
+
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container-fluid px-0">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-scopeindia text-white text-center py-4 mt-4">
+        <div class="container">
+            <div class="mb-2">
+                We are located at Technopark TVM | Thampanoor TVM | Kochi, Kerala | Nagercoil, Tamil Nadu
+            </div>
+            <div class="mb-2 fw-bold">
+                9745936073 (TPK) | 9745936073 (TVM) | 7592939481 (EKM) | 8075536185 (NGL) |
+                <a href="mailto:info@scopeindia.org" class="text-warning text-decoration-none">info@scopeindia.org</a>
+            </div>
+            <div class="small">
+                All Rights Reserved <strong>SCOPE INDIA & SUFFIX E SOLUTIONS PRIVATE LIMITED</strong> © 2007–2025 |
+                <a asp-controller="Home" asp-action="Privacy" class="text-warning text-decoration-none">Privacy Policy</a> |
+                <a href="#" class="text-warning text-decoration-none">Blog</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

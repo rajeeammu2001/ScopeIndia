@@ -1,0 +1,246 @@
+﻿@model ScopeIndia.Models.Course
+@{
+    ViewData["Title"] = "PHP Full Stack Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var syllabusItems = Model.Syllabus?.Split(',') ?? new string[0];
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(to bottom, #001f3f, #003366);
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+        overflow-x: hidden;
+    }
+
+    .hero {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background: #000028;
+        text-align: center;
+        padding: 30px 10px;
+    }
+
+        .hero h2 {
+            color: #FFC300;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+    .subtitle {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 20px 10px;
+        font-weight: bold;
+        font-size: 18px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    .yellow-bar {
+        background-color: #ffcc00;
+        color: black;
+        text-align: center;
+        padding: 15px 10px;
+        font-weight: bold;
+        font-size: 20px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        position: relative;
+    }
+
+        .yellow-bar::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+        }
+
+    .info-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        flex-wrap: wrap;
+        background: #071f3b;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    .info-box {
+        border: 1px solid #ffcc00;
+        background: #000028;
+        padding: 15px 25px;
+        border-radius: 50px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        min-width: 460px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .long-description {
+        background: #0c0b0b;
+        border: 2px solid #ffcc00;
+        padding: 30px 20px;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        box-shadow: 2px 2px 10px #000;
+        line-height: 1.7;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    .syllabus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        padding: 30px 20px;
+        background: #071f3b;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+
+    .syllabus-item {
+        border: 1px solid #ffcc00;
+        padding: 12px 20px;
+        border-radius: 10px;
+        background: #111;
+        color: white;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .action-buttons {
+        text-align: center;
+        margin: 40px 0 60px 0;
+    }
+
+    .btn-custom {
+        background: linear-gradient(to right, #ddd, #aaa);
+        padding: 15px 30px;
+        margin: 15px;
+        border-radius: 30px;
+        font-weight: bold;
+        color: black;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        min-width: 200px;
+        box-shadow: 2px 2px 5px #000;
+    }
+
+    .divider-yellow {
+        border: 2px solid #ffcc00;
+        height: 3px;
+        background-color: #ffcc00;
+        box-shadow: 0px 2px 4px rgba(255, 204, 0, 0.6);
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin: 0;
+    }
+
+    .divider-white {
+        border: none;
+        height: 2px;
+        background-color: white;
+        box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.4);
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin: 0;
+    }
+
+    @@media (max-width: 768px) {
+        .info-box, .syllabus-item {
+            min-width: 100%;
+        }
+
+        .syllabus-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<hr class="divider-yellow">
+
+<!-- Hero Title -->
+<div class="hero">
+    <h2>@Model.Title & Internship</h2>
+</div>
+<hr class="divider-yellow">
+
+<!-- Subtitle -->
+<div style="background-color: #2f2f2f; padding: 20px 10px; width: 100vw; margin-left: calc(-50vw + 50%);">
+    <h1 class="text-center text-white mb-2">Center for Software, Networking, & Cloud Education</h1>
+    <p class="text-center text-white mb-0">
+        One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience.
+        Over 1,000 students find their dream careers each year and we have assisted more than 15,000 students so far.
+    </p>
+</div>
+<hr class="divider-white">
+
+<!-- Syllabus Label -->
+<div class="yellow-bar">
+    Course Syllabus
+</div>
+<hr class="divider-white">
+
+<!-- Info Row -->
+<div class="info-row">
+    <div class="info-box">Course Duration: @Model.Duration</div>
+    <div class="info-box">@Model.Timing</div>
+    <div class="info-box">Next Batch: @Model.BatchDate</div>
+</div>
+<hr class="divider-yellow">
+
+<!-- Course Description -->
+<div class="long-description">
+
+
+    <p>
+        Our PHP Full Stack Development Internship Program is tailored to help 
+        aspiring developers, students, and recent graduates build successful careers in web development. 
+        This program covers front-end and back-end technologies, with PHP as the core language.
+        Participants will master HTML6, CSS4, JavaScript, and frameworks like
+        React.js , as well as PHP fundamentals, object-oriented programming (OOP),
+        frameworks like Laravel and CodeIgniter, and RESTful APIs for robust server-side applications.
+        The program also prioritizes database management with tools like MySQL and MongoDB, along with version control tools like 
+        Git and GitHub to streamline collaboration.
+        Live projects guided by expert mentors ensure hands-on experience, creating a professional portfolio that stands out to employers.
+    </p>
+    <p>
+        Graduates gain career readiness through resources like
+        resume support, interview preparation, and certification, positioning them for roles such as
+        PHP Full Stack Developer, Web Developer, or Application Developer. This internship combines technical expertise 
+        with industry insights and networking opportunities, enabling participants to thrive in the evolving digital sector.
+        Whether you're new to web development or looking to enhance your skills, this program equips you with
+        the practical knowledge and confidence needed to achieve your career aspirations.
+    </p>
+</div>
+<hr class="divider-yellow">
+
+<!-- Syllabus Items -->
+<div class="syllabus-grid">
+    @foreach (var topic in syllabusItems)
+    {
+        <div class="syllabus-item">@topic.Trim()</div>
+    }
+</div>
+<hr class="divider-yellow">
+
+<!-- Buttons -->
+<div class="action-buttons">
+    <a href="https://scopeindia.org/contact.html" class="btn-custom">Talk to Us</a>
+    <a href="@Url.Action("Index", "Course")" class="btn-custom">Back to Courses</a>
+</div>

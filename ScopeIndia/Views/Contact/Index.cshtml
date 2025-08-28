@@ -1,0 +1,202 @@
+﻿@model List<ScopeIndia.Models.ContactLocation>
+
+@{
+    ViewBag.Title = "Contact Us";
+    var firstRow = Model.Take(2).ToList();
+    var secondRow = Model.Skip(2).ToList();
+}
+
+<style>
+    .contact-page {
+        background-color: #0e132a;
+        padding: 30px 20px;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .section-header {
+        background-color: #013B92;
+        border-top: 1px solid yellow;
+        border-bottom: 1px solid yellow;
+        padding: 10px 0;
+        margin-top: 0; /* Remove gap from top */
+    }
+
+    .contact-title {
+        color: yellow;
+        font-weight: bold;
+        font-size: 26px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .center-info {
+        background-color: black;
+        padding: 20px;
+        margin-bottom: 0;
+    }
+
+
+    .intro-block {
+        background-color: black;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .intro-block h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .intro-block p {
+            color: #d3d3d3;
+            font-size: 14px;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+    .contact-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contact-box {
+        flex: 0 0 calc(33.33% - 20px);
+        background: linear-gradient(to bottom, #1e2d58, #141a33);
+        padding: 20px;
+        border: 1px solid orange;
+        border-radius: 6px;
+        color: white;
+        box-sizing: border-box;
+        min-height: 280px;
+        position: relative;
+    }
+
+        .contact-box h4 {
+            color: red;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .contact-box p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+    .contact-button {
+        background-color: #2566af;
+        color: white;
+        padding: 8px;
+        border: none;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 13px;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+
+    .image-box {
+        background-image: url('/images/contactimg.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 calc(33.33% - 20px);
+        border: 1px solid orange;
+        border-radius: 6px;
+        height: 280px;
+        position: relative;
+    }
+
+    .image-overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        border-radius: 6px;
+    }
+
+        .image-overlay h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .image-overlay p {
+            font-size: 14px;
+        }
+
+    @@media (max-width: 992px) {
+        .contact-box, .image-box
+
+    {
+        flex: 0 0 calc(50% - 20px);
+    }
+
+    }
+
+    @@media (max-width: 600px) {
+        .contact-box, .image-box
+
+    {
+        flex: 0 0 100%;
+    }
+
+    }
+</style>
+
+<div class="section-header">
+    <h2 class="contact-title">SCOPE INDIA Locations & Contact Details</h2>
+</div>
+
+    <div class="intro-block">
+        <h3>Center for Software, Networking, & Cloud Education</h3>
+        <p>
+            One of India’s best training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of industrial experience.
+            Over 1,000 students find their dream careers each year, and we have assisted more than 15,000 students so far.
+        </p>
+    </div>
+
+    <div class="contact-grid">
+        <!-- Left image box -->
+        <div class="image-box">
+            <div class="image-overlay">
+                <h4>SCOPE INDIA is open 365 days a year</h4>
+                <p>Call us now if you are looking for an IT job or adding more skills to your career</p>
+            </div>
+        </div>
+
+        <!-- First two locations -->
+        @foreach (var loc in firstRow)
+        {
+            <div class="contact-box">
+                <h4>@loc.Title</h4>
+                <p>@loc.Address</p>
+                <div class="contact-button">@loc.Phone</div>
+                <div class="contact-button">@loc.Email</div>
+                <div class="contact-button">@loc.RouteLink</div>
+            </div>
+        }
+
+        <!-- Next three locations -->
+        @foreach (var loc in secondRow)
+        {
+            <div class="contact-box">
+                <h4>@loc.Title</h4>
+                <p>@loc.Address</p>
+                <div class="contact-button">@loc.Phone</div>
+                <div class="contact-button">@loc.Email</div>
+                <div class="contact-button">@loc.RouteLink</div>
+            </div>
+        }
+    </div>
+</div>
